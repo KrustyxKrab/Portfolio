@@ -1,12 +1,38 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import HeroCard from "@/components/home/HeroCard.astro";
 import AnimatedText from "@/components/ui/AnimatedText.astro";
-import Button from "@/components/ui/Button.astro";
 import Arbeit from "@/components/sections/Arbeit.astro";
 import Leistungen from "@/components/sections/Leistungen.astro";
 import UeberMich from "@/components/sections/UeberMich.astro";
 import Kontakt from "@/components/sections/Kontakt.astro";
+
+const projects = [
+  {
+    title: "Showreel",
+    desc: "Ein Überblick meiner Arbeit — von Dokumentarfilm bis Corporate Video.",
+    youtubeId: "i2XQD4q17xE",
+  },
+  {
+    title: "Corporate Imagefilm",
+    desc: "Authentisches Unternehmensporträt — echte Menschen, echte Arbeit.",
+    youtubeId: "1KH7lmJIPGU",
+  },
+  {
+    title: "Lünale 2025",
+    desc: "Dokumentation des Lüneburger Filmfestivals — nah an den Menschen.",
+    youtubeId: "ujBJgQYYf4k",
+  },
+  {
+    title: "Dokumentation",
+    desc: "Geduldig beobachtet. Ungeplant, ungestellt, wahr.",
+    youtubeId: "4vN3965XKg0",
+  },
+  {
+    title: "Animationsvideos",
+    desc: "Bewegtbild, das erklärt — präzise und visuell stark.",
+    youtubeId: "evxGICON_GM",
+  },
+];
 ---
 
 <Layout
@@ -14,59 +40,118 @@ import Kontakt from "@/components/sections/Kontakt.astro";
   description="Authentisches Storytelling für Documentary & Corporate Video. Silas Kruckenberg bringt deine Geschichte auf die Leinwand."
   keywords="Documentary, Corporate Video, Storytelling, Videoproduktion, Deutschland"
 >
-  <!-- Hero -->
-  <div class="relative site-container z-20 w-full mx-auto mt-16 px-4 md:mt-18 lg:mt-20 xl:px-0">
-    <div class="relative w-full px-4 flex flex-col items-center justify-between md:flex-row mb-16">
+  <!-- ── HERO ─────────────────────────────────────────────────── -->
+  <section class="hero-wrap">
+    <div class="site-container hero-inner">
 
-      <!-- Left: text + button -->
-      <div class="relative w-full md:max-w-[420px] md:w-1/2 text-center sm:text-left sm:-mt-8">
-        <h1 class="mb-4">
+      <!-- Left column -->
+      <div class="hero-left">
+        <h1 class="hero-heading">
           <AnimatedText
             content="Hi, Ich bin Silas"
-            delay={0.1}
-            duration={0.5}
-            stagger={0.08}
-            class="text-5xl text-neutral-900 leading-tight md:text-4xl lg:text-6xl"
+            delay={0.05}
+            duration={0.45}
+            stagger={0.07}
+            class="hero-heading-text"
           />
         </h1>
+        <p class="hero-sub">Videograf & Dokumentarfilmer aus Deutschland</p>
 
-        <div class="mb-2">
-          <AnimatedText
-            content="Videograf und Dokumentarfilmer aus Deutschland. Ich begleite Menschen mit der Kamera — in Fabrikhallen, auf Feldern, in Büros, in ihren Wohnzimmern."
-            delay={0.3}
-            duration={0.5}
-            stagger={0.015}
-            class="text-base text-neutral-700"
-          />
+        <div class="hero-divider" aria-hidden="true"></div>
+
+        <!-- Dynamic project info -->
+        <div class="hero-project-info" aria-live="polite">
+          <span class="project-counter" id="proj-counter">01 / 0{projects.length}</span>
+          <h2 class="project-title" id="proj-title">{projects[0].title}</h2>
+          <p class="project-desc" id="proj-desc">{projects[0].desc}</p>
+          <a
+            class="proj-cta"
+            id="proj-cta"
+            href={`https://www.youtube.com/watch?v=${projects[0].youtubeId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Auf YouTube ansehen
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
         </div>
 
-        <div class="mb-4">
-          <AnimatedText
-            content="Was mich antreibt: der Moment, in dem Kamera und Mensch sich vergessen. Wenn eine Geschichte einfach passiert — ungeplant, ungestellt, wahr."
-            delay={0.5}
-            duration={0.5}
-            stagger={0.015}
-            class="text-base text-neutral-700"
-          />
-        </div>
-
-        <div>
-          <Button url="/#arbeit" type="fill" className="m-auto mt-4 text-center sm:text-left sm:m-0 sm:mt-6 max-w-[200px]">
-            Meine Arbeit ↓
-          </Button>
+        <!-- Navigation -->
+        <div class="hero-nav">
+          <button class="nav-arrow" id="prev-btn" aria-label="Vorheriges Projekt">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          <div class="hero-dots" role="tablist" aria-label="Projekt Navigation">
+            {projects.map((p, i) => (
+              <button
+                class={`hero-dot${i === 0 ? " active" : ""}`}
+                data-idx={i}
+                role="tab"
+                aria-selected={i === 0 ? "true" : "false"}
+                aria-label={`Projekt: ${p.title}`}
+              />
+            ))}
+          </div>
+          <button class="nav-arrow" id="next-btn" aria-label="Nächstes Projekt">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
         </div>
       </div>
 
-      <!-- Right: Silas photo card -->
-      <div class="relative justify-end w-full mt-16 md:flex md:pl-10 md:w-1/2 md:mt-0 md:translate-y-4 xl:translate-y-0">
-        <HeroCard
-          imageUrl="/assets/Silas LinkedIn-1.jpg"
-          title="Silas Kruckenberg"
-          link="/#arbeit"
-        />
+      <!-- Right column: interactive project card -->
+      <div class="hero-right">
+        <div class="project-card" id="project-card">
+
+          <!-- Corner squares -->
+          <div class="corner tl"></div>
+          <div class="corner tr"></div>
+          <div class="corner bl"></div>
+          <div class="corner br"></div>
+
+          <!-- Thumbnail stack -->
+          <div class="thumb-wrap" id="thumb-wrap">
+            {projects.map((p, i) => (
+              <img
+                src={`https://img.youtube.com/vi/${p.youtubeId}/maxresdefault.jpg`}
+                alt={p.title}
+                class={`thumb${i === 0 ? " active" : ""}`}
+                data-idx={i}
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
+            ))}
+
+            <!-- Play overlay -->
+            <div class="play-overlay" id="play-overlay" aria-hidden="true">
+              <div class="play-circle">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card label -->
+          <div class="card-label" id="card-label">{projects[0].title}</div>
+
+          <!-- Custom cursor -->
+          <div class="cursor-dot" id="cursor-dot" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"/>
+              <polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </div>
+        </div>
       </div>
+
     </div>
-  </div>
+  </section>
 
   <!-- Sections -->
   <Arbeit />
@@ -74,3 +159,455 @@ import Kontakt from "@/components/sections/Kontakt.astro";
   <UeberMich />
   <Kontakt />
 </Layout>
+
+<style>
+  /* ── Hero layout ─────────────────────────────────── */
+  .hero-wrap {
+    min-height: calc(100vh - 0px);
+    display: flex;
+    align-items: center;
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+  }
+
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .hero-inner {
+      flex-direction: row;
+      align-items: center;
+      gap: 4rem;
+    }
+  }
+
+  /* ── Left column ──────────────────────────────────── */
+  .hero-left {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero-heading {
+    margin: 0 0 0.5rem;
+  }
+
+  :global(.hero-heading-text) {
+    font-family: var(--font-heading) !important;
+    font-weight: 900 !important;
+    font-size: clamp(2.8rem, 6vw, 4.5rem) !important;
+    line-height: 1.05 !important;
+    color: var(--color-text-primary) !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  .hero-sub {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin: 0 0 1.75rem;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--color-rust);
+    margin-bottom: 1.75rem;
+  }
+
+  /* ── Project info ─────────────────────────────────── */
+  .hero-project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 2rem;
+  }
+
+  .project-counter {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-rust);
+    font-weight: 500;
+  }
+
+  .project-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--color-text-primary);
+    margin: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .project-desc {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--color-text-secondary);
+    margin: 0.25rem 0 0.75rem;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .proj-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    color: var(--color-rust);
+    text-decoration: none;
+    transition: gap 0.2s ease, color 0.2s ease;
+  }
+
+  .proj-cta:hover {
+    gap: 0.65rem;
+    color: var(--color-rust-dark);
+  }
+
+  .proj-cta svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  /* Fade-out class applied during switch */
+  .fading .project-title,
+  .fading .project-desc {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  /* ── Navigation ───────────────────────────────────── */
+  .hero-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .nav-arrow {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid rgba(17,17,17,0.2);
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .nav-arrow:hover {
+    border-color: var(--color-rust);
+    background: var(--color-rust);
+    color: white;
+  }
+
+  .nav-arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .hero-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .hero-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(17,17,17,0.2);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .hero-dot.active {
+    background: var(--color-rust);
+    transform: scale(1.4);
+  }
+
+  /* ── Right column: project card ───────────────────── */
+  .hero-right {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .project-card {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    padding: 12px;
+    border: 3px solid var(--color-text-primary);
+    cursor: none;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+
+  .corner {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border: 2px solid var(--color-text-primary);
+    z-index: 2;
+  }
+  .corner.tl { top: -5px; left: -5px; }
+  .corner.tr { top: -5px; right: -5px; }
+  .corner.bl { bottom: -5px; left: -5px; }
+  .corner.br { bottom: -5px; right: -5px; }
+
+  .thumb-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #111;
+  }
+
+  .thumb {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .thumb.active {
+    opacity: 1;
+  }
+
+  /* Play overlay */
+  .play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .thumb-wrap:hover .play-overlay {
+    opacity: 1;
+  }
+
+  .play-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #111;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    transform: scale(0.85);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .thumb-wrap:hover .play-circle {
+    transform: scale(1);
+  }
+
+  .play-circle svg {
+    width: 22px;
+    height: 22px;
+    margin-left: 3px;
+  }
+
+  /* Card label */
+  .card-label {
+    position: absolute;
+    left: 32px;
+    top: -22px;
+    height: 22px;
+    line-height: 22px;
+    padding: 0 10px;
+    background: var(--color-text-primary);
+    border-radius: 4px 4px 0 0;
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: white;
+    white-space: nowrap;
+    transition: opacity 0.25s ease;
+  }
+
+  /* Custom cursor dot */
+  .cursor-dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 10;
+  }
+
+  .cursor-dot svg {
+    width: 20px;
+    height: 20px;
+    color: #111;
+  }
+
+  .project-card:hover .cursor-dot {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+</style>
+
+<script is:inline define:vars={{ projects }}>
+  const titleEl   = document.getElementById('proj-title');
+  const descEl    = document.getElementById('proj-desc');
+  const ctaEl     = document.getElementById('proj-cta');
+  const counterEl = document.getElementById('proj-counter');
+  const labelEl   = document.getElementById('card-label');
+  const leftCol   = document.querySelector('.hero-project-info');
+  const thumbs    = document.querySelectorAll('.thumb');
+  const dots      = document.querySelectorAll('.hero-dot');
+  const card      = document.getElementById('project-card');
+  const cursorDot = document.getElementById('cursor-dot');
+  const thumbWrap = document.getElementById('thumb-wrap');
+  const prevBtn   = document.getElementById('prev-btn');
+  const nextBtn   = document.getElementById('next-btn');
+
+  let current = 0;
+  const total = projects.length;
+  const pad = n => String(n).padStart(2, '0');
+
+  function goTo(idx) {
+    if (idx === current) return;
+
+    // Fade left column out
+    leftCol.classList.add('fading');
+
+    setTimeout(() => {
+      // Switch thumbnail
+      thumbs[current].classList.remove('active');
+      thumbs[idx].classList.add('active');
+
+      // Update text
+      titleEl.textContent   = projects[idx].title;
+      descEl.textContent    = projects[idx].desc;
+      ctaEl.href            = `https://www.youtube.com/watch?v=${projects[idx].youtubeId}`;
+      counterEl.textContent = `${pad(idx + 1)} / ${pad(total)}`;
+      labelEl.textContent   = projects[idx].title;
+
+      current = idx;
+
+      // Update dots
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === idx);
+        d.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      });
+
+      // Fade back in
+      leftCol.classList.remove('fading');
+    }, 250);
+  }
+
+  // Dots
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => goTo(i));
+  });
+
+  // Arrows
+  prevBtn.addEventListener('click', () => goTo((current - 1 + total) % total));
+  nextBtn.addEventListener('click', () => goTo((current + 1) % total));
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  goTo((current - 1 + total) % total);
+    if (e.key === 'ArrowRight') goTo((current + 1) % total);
+  });
+
+  // Click card → open YouTube
+  thumbWrap.addEventListener('click', () => {
+    window.open(`https://www.youtube.com/watch?v=${projects[current].youtubeId}`, '_blank', 'noopener,noreferrer');
+  });
+
+  // Parallax + custom cursor
+  if (card && window.innerWidth >= 768) {
+    let mouseX = 0, mouseY = 0;
+    const strength = 18;
+    const ease = 0.08;
+    let curX = 0, curY = 0;
+    let dotX = 0, dotY = 0;
+    let isOver = false;
+
+    document.addEventListener('mousemove', e => {
+      mouseX = (e.clientX / window.innerWidth) - 0.5;
+      mouseY = (e.clientY / window.innerHeight) - 0.5;
+    });
+
+    card.addEventListener('mouseenter', () => {
+      isOver = true;
+      document.documentElement.classList.add('cursor-hidden');
+    });
+    card.addEventListener('mouseleave', () => {
+      isOver = false;
+      document.documentElement.classList.remove('cursor-hidden');
+    });
+    card.addEventListener('mousemove', e => {
+      if (!isOver || !cursorDot) return;
+      const r = card.getBoundingClientRect();
+      dotX = e.clientX - r.left;
+      dotY = e.clientY - r.top;
+    });
+
+    (function loop() {
+      // Parallax
+      const tx = mouseX * strength;
+      const ty = mouseY * strength;
+      const m = new DOMMatrix(getComputedStyle(card).transform);
+      curX += (tx - (m.m41 || 0)) * ease;
+      curY += (ty - (m.m42 || 0)) * ease;
+      card.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+
+      // Cursor dot
+      if (cursorDot && isOver) {
+        const cx = parseFloat(cursorDot.style.left) || 0;
+        const cy = parseFloat(cursorDot.style.top)  || 0;
+        cursorDot.style.left = cx + (dotX - cx) * 0.12 + 'px';
+        cursorDot.style.top  = cy + (dotY - cy) * 0.12 + 'px';
+      }
+
+      requestAnimationFrame(loop);
+    })();
+  }
+</script>

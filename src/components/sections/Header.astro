@@ -5,9 +5,8 @@ import menus from "@/collections/menu.json";
 <header id="site-header">
   <div class="header-inner site-container">
     <!-- Logo -->
-    <a href="#" class="logo-link" aria-label="Silas Kruckenberg — Startseite">
-      <span class="logo-full">Silas Kruckenberg</span>
-      <span class="logo-short" aria-hidden="true">SK</span>
+    <a href="/" class="logo-link" aria-label="Silas Kruckenberg — Startseite">
+      <img src="/assets/Logo SK.svg" alt="SK" class="logo-img" width="44" height="27" />
     </a>
 
     <!-- Desktop nav -->
@@ -64,23 +63,21 @@ import menus from "@/collections/menu.json";
     font-size: 0.9rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--color-cream);
+    color: var(--color-text-primary);
     text-decoration: none;
     z-index: 110;
     position: relative;
+    transition: color 0.3s ease;
   }
 
-  .logo-short {
-    display: none;
+  #site-header.scrolled .logo-link {
+    color: var(--color-cream);
   }
 
-  @media (max-width: 480px) {
-    .logo-full {
-      display: none;
-    }
-    .logo-short {
-      display: inline;
-    }
+  .logo-img {
+    display: block;
+    height: 28px;
+    width: auto;
   }
 
   /* Desktop nav */
@@ -96,12 +93,20 @@ import menus from "@/collections/menu.json";
     font-size: 0.875rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--color-cream);
+    color: var(--color-text-primary);
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
   .nav-link:hover {
+    color: var(--color-rust);
+  }
+
+  #site-header.scrolled .nav-link {
+    color: var(--color-cream);
+  }
+
+  #site-header.scrolled .nav-link:hover {
     color: var(--color-rust-light);
   }
 
@@ -138,10 +143,14 @@ import menus from "@/collections/menu.json";
     display: block;
     width: 24px;
     height: 2px;
-    background: var(--color-cream);
+    background: var(--color-text-primary);
     border-radius: 2px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
     transform-origin: center;
+  }
+
+  #site-header.scrolled .burger-line {
+    background: var(--color-cream);
   }
 
   /* Burger → X animation */
