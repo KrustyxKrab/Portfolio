@@ -1,0 +1,214 @@
+---
+const showreel = {
+  youtubeId: "i2XQD4q17xE",
+  title: "Showreel",
+};
+
+const videos = [
+  { type: "youtube", youtubeId: "1KH7lmJIPGU", title: "Corporate Imagefilm",    desc: "" },
+  { type: "youtube", youtubeId: "ujBJgQYYf4k", title: "Lünale 2025",            desc: "" },
+  { type: "youtube", youtubeId: "4vN3965XKg0", title: "Dokumentation",          desc: "" },
+  { type: "instagram", url: "https://www.instagram.com/reel/C_K79M4MItc/", title: "Instagram Marketing", desc: "" },
+  { type: "youtube", youtubeId: "evxGICON_GM", title: "Animationsvideos",       desc: "" },
+];
+
+function embedUrl(id: string) {
+  return `https://www.youtube-nocookie.com/embed/${id}?rel=0&modestbranding=1`;
+}
+---
+
+<section id="arbeit" class="arbeit-section">
+  <div class="site-container">
+
+    <div class="section-header">
+      <h2 class="section-title">Arbeit</h2>
+      <p class="section-sub">Bewegtbild, das bewegt.</p>
+    </div>
+
+    <div class="showreel-wrap">
+      <iframe
+        src={embedUrl(showreel.youtubeId)}
+        title={showreel.title}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+      />
+    </div>
+
+    <div class="video-grid">
+      {videos.map((v) => (
+        <div class="video-card">
+          <div class="video-embed-wrap">
+            {v.type === "youtube" ? (
+              <iframe
+                src={embedUrl(v.youtubeId!)}
+                title={v.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy"
+              />
+            ) : (
+              <a class="instagram-card" href={v.url} target="_blank" rel="noopener noreferrer" aria-label={v.title}>
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                </svg>
+                <span>Reel ansehen</span>
+              </a>
+            )}
+          </div>
+          <div class="video-info">
+            <h3 class="video-title">{v.title}</h3>
+            {v.desc && <p class="video-desc">{v.desc}</p>}
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .arbeit-section {
+    background: var(--color-bg-primary-dark);
+    padding: 7rem 0 6rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(3rem, 7vw, 6rem);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-cream);
+    line-height: 1;
+    margin: 0 0 0.5rem;
+  }
+
+  .section-sub {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: rgba(245, 239, 230, 0.6);
+    margin: 0;
+  }
+
+  /* Showreel */
+  .showreel-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    margin-bottom: 3rem;
+    background: #111;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .showreel-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Video-Grid */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .video-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 560px) {
+    .video-grid { grid-template-columns: 1fr; }
+  }
+
+  .video-card {
+    background: var(--color-bg-secondary-dark);
+    border: 1px solid rgba(183, 65, 14, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+
+  .video-card:hover {
+    border-color: var(--color-rust);
+    transform: translateY(-3px);
+  }
+
+  .video-embed-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: #111;
+  }
+
+  .video-embed-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Instagram-Karte */
+  .instagram-card {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .instagram-card:hover {
+    opacity: 0.88;
+  }
+
+  .instagram-card svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  .instagram-card span {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* Video-Info */
+  .video-info {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+
+  .video-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-cream);
+    margin: 0;
+  }
+
+  .video-desc {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: rgba(245, 239, 230, 0.55);
+    margin: 0.3rem 0 0;
+  }
+</style>
