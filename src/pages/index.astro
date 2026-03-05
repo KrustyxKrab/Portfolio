@@ -11,26 +11,31 @@ const projects = [
     title: "Showreel",
     desc: "Ein Überblick meiner Arbeit — von Dokumentarfilm bis Corporate Video.",
     youtubeId: "i2XQD4q17xE",
+    thumb: "hqdefault", // Dieses Video hat kein maxresdefault
   },
   {
     title: "Corporate Imagefilm",
     desc: "Authentisches Unternehmensporträt — echte Menschen, echte Arbeit.",
     youtubeId: "1KH7lmJIPGU",
+    thumb: "maxresdefault",
   },
   {
     title: "Lünale 2025",
     desc: "Dokumentation des Lüneburger Filmfestivals — nah an den Menschen.",
     youtubeId: "ujBJgQYYf4k",
+    thumb: "maxresdefault",
   },
   {
     title: "Dokumentation",
     desc: "Geduldig beobachtet. Ungeplant, ungestellt, wahr.",
     youtubeId: "4vN3965XKg0",
+    thumb: "hqdefault", // Dieses Video hat kein maxresdefault
   },
   {
     title: "Animationsvideos",
     desc: "Bewegtbild, das erklärt — präzise und visuell stark.",
-    youtubeId: "evxGICON_GM",
+    youtubeId: "5jyCrV6pdMA",
+    thumb: "maxresdefault",
   },
 ];
 ---
@@ -115,17 +120,17 @@ const projects = [
           <div class="corner br"></div>
 
           <!-- Thumbnail stack -->
-          <div class="thumb-wrap" id="thumb-wrap">
-            {projects.map((p, i) => (
-              <img
-                src={`https://img.youtube.com/vi/${p.youtubeId}/maxresdefault.jpg`}
-                alt={p.title}
-                class={`thumb${i === 0 ? " active" : ""}`}
-                data-idx={i}
-                loading={i === 0 ? "eager" : "lazy"}
-                decoding="async"
-              />
-            ))}
+        <div class="thumb-wrap" id="thumb-wrap">
+          {projects.map((p, i) => (
+            <img
+              src={`https://img.youtube.com/vi/${p.youtubeId}/${p.thumb}.jpg`}
+              alt={p.title}
+              class={`thumb${i === 0 ? " active" : ""}`}
+              data-idx={i}
+              loading={i === 0 ? "eager" : "lazy"}
+              decoding="async"
+            />
+          ))}
 
             <!-- Play overlay -->
             <div class="play-overlay" id="play-overlay" aria-hidden="true">
