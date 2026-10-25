@@ -1,0 +1,111 @@
+---
+import { localizedAppHref, type Locale } from '../../lib/i18n';
+interface Item {
+  label: string;
+  href?: string;
+  image?: string;
+  note?: string;
+  target?: string;
+}
+
+interface Props {
+  items: Item[];
+  locale?: Locale;
+}
+
+const { items, locale = 'de' } = Astro.props;
+
+// Bare filenames (e.g. "document.svg") live in /icons; anything with a slash
+// (e.g. "photos/aurora-1.svg") is already a root-relative public/ path.
+function resolveImage(image?: string) {
+  if (!image) return undefined;
+  if (/^https?:\/\//.test(image)) return image;
+  return image.includes('/') ? `/${image.replace(/^\/+/, '')}` : `/icons/${image}`;
+}
+
+// Recognizes youtube.com/watch?v=<id>, youtu.be/<id>, youtube.com/shorts/<id>
+// (and /embed/<id>, in case someone pastes an embed link). Anything else
+// (including a malformed URL) returns undefined and falls back to a plain link.
+function getYouTubeId(href?: string): string | undefined {
+  if (!href) return undefined;
+  let url: URL;
+  try {
+    url = new URL(href);
+  } catch {
+    return undefined;
+  }
+  const host = url.hostname.replace(/^www\./, '');
+  if (host === 'youtu.be') {
+    return url.pathname.slice(1).split('/')[0] || undefined;
+  }
+  if (host === 'youtube.com' || host === 'm.youtube.com' || host === 'youtube-nocookie.com') {
+    if (url.pathname === '/watch') return url.searchParams.get('v') || undefined;
+    const match = url.pathname.match(/^\/(?:shorts|embed)\/([^/?]+)/);
+    if (match) return match[1];
+  }
+  return undefined;
+}
+---
+
+<div class="win-gallery">
+  {
+    items.map((item) => {
+      const youtubeId = getYouTubeId(item.href);
+      const explicitSrc = resolveImage(item.image);
+      // No explicit image on a YouTube item -> auto thumbnail, zero config.
+      const src = youtubeId
+        ? (explicitSrc ?? `https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`)
+        : explicitSrc;
+
+      const thumb = src ? (
+        youtubeId ? (
+          <span class="video-thumb">
+            <img src={src} alt="" loading="lazy" />
+          </span>
+        ) : (
+          <img src={src} alt="" loading="lazy" />
+        )
+      ) : undefined;
+
+      const body = (
+        <>
+          {thumb}
+          <span class="win-gallery-label">{item.label}</span>
+          {item.note && <span class="win-gallery-note">{item.note}</span>}
+        </>
+      );
+
+      // target (open another window) wins over a YouTube href, which wins
+      // over a plain href, which wins over the image-only lightbox fallback.
+      if (item.target) {
+        return (
+          <a class="win-gallery-item" href={item.href ?? localizedAppHref(item.target, locale)} data-target={item.target}>
+            {body}
+          </a>
+        );
+      }
+      if (youtubeId) {
+        return (
+          <button type="button" class="win-gallery-item" data-youtube={youtubeId}>
+            {body}
+          </button>
+        );
+      }
+      if (item.href) {
+        return (
+          <a class="win-gallery-item" href={item.href} target={/^https?:\/\//.test(item.href) ? '_blank' : undefined} rel={/^https?:\/\//.test(item.href) ? 'noopener noreferrer' : undefined}>
+            {body}
+          </a>
+        );
+      }
+      if (src) {
+        return (
+          <button type="button" class="win-gallery-item" data-lightbox data-image={src} data-alt={item.label}>
+            {body}
+          </button>
+        );
+      }
+      return <div class="win-gallery-item">{body}</div>;
+    })
+  }
+</div>

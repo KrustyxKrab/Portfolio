@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!--
+    "Photos"
+
+    The PNG's picture square over a parchment lozenge. The lozenge is a depth
+    pane whose centre is subtracted (the inner rectangle is wound the opposite
+    way), so only its four points show and no two glass panes stack.
+
+    The dated white tag is replaced by the picture itself, painted with the
+    same recess -> url(#screen) -> gloss -> inner-border recipe about.svg uses
+    for its display.
+  -->
+  <defs>
+    <linearGradient id="topBody" x1="0" y1="1" x2="0.4" y2="0">
+      <stop offset="0" stop-color="#dce5f7"/>
+      <stop offset="1" stop-color="#f8fbff"/>
+    </linearGradient>
+    <linearGradient id="sideBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#93a1c7"/>
+      <stop offset="1" stop-color="#6d7c9a"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0"   stop-color="#7cc4ff"/>
+      <stop offset="0.5" stop-color="#2f66e6"/>
+      <stop offset="1"   stop-color="#78e4ff"/>
+    </linearGradient>
+    <linearGradient id="badgeTint" x1="0.2" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#a9d4ff"/>
+      <stop offset="1" stop-color="#3d6fe8"/>
+    </linearGradient>
+    <!-- specular sheet for the clipped depth panes = the CSS ::before analogue -->
+    <linearGradient id="spec" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0"   stop-color="#ffffff" stop-opacity="0.32"/>
+      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0.07"/>
+      <stop offset="0.6" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <!-- dual-rim bevel for the clipped panes, matched to the front CSS bevel weight -->
+    <linearGradient id="rimLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"    stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="0.5"  stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="1"    stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rimDark" x1="1" y1="1" x2="0.2" y2="0.1">
+      <stop offset="0"   stop-color="#2b3a68" stop-opacity="0.45"/>
+      <stop offset="0.5" stop-color="#2b3a68" stop-opacity="0"/>
+      <stop offset="1"   stop-color="#2b3a68" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="shotClip"><rect x="35" y="39" width="58" height="50" rx="4"/></clipPath>
+
+    <!-- GLASS FACES (read by Icon.astro; never painted here). back -> front. -->
+    <path data-glass d="M 59.05 22.95 A 7 7 0 0 1 68.95 22.95 L 105.05 59.05 A 7 7 0 0 1 105.05 68.95 L 68.95 105.05 A 7 7 0 0 1 59.05 105.05 L 22.95 68.95 A 7 7 0 0 1 22.95 59.05 Z M 38 34 A 8 8 0 0 0 30 42 L 30 86 A 8 8 0 0 0 38 94 L 90 94 A 8 8 0 0 0 98 86 L 98 42 A 8 8 0 0 0 90 34 Z"/>
+    <rect data-glass x="30" y="34" width="68" height="60" rx="8"/>
+  </defs>
+
+  <!-- ===== BACKING DIAMOND: the PNG's parchment lozenge. Its rectangular
+       centre is wound the other way, so the pane is a FRAME and never
+       doubles up with the photo's glass. ===== -->
+  <path d="M 59.05 22.95 A 7 7 0 0 1 68.95 22.95 L 105.05 59.05 A 7 7 0 0 1 105.05 68.95 L 68.95 105.05 A 7 7 0 0 1 59.05 105.05 L 22.95 68.95 A 7 7 0 0 1 22.95 59.05 Z M 38 34 A 8 8 0 0 0 30 42 L 30 86 A 8 8 0 0 0 38 94 L 90 94 A 8 8 0 0 0 98 86 L 98 42 A 8 8 0 0 0 90 34 Z"
+        fill="url(#topBody)" opacity="0.4"/>
+  <path d="M 59.05 22.95 A 7 7 0 0 1 68.95 22.95 L 105.05 59.05 A 7 7 0 0 1 105.05 68.95 L 68.95 105.05 A 7 7 0 0 1 59.05 105.05 L 22.95 68.95 A 7 7 0 0 1 22.95 59.05 Z M 38 34 A 8 8 0 0 0 30 42 L 30 86 A 8 8 0 0 0 38 94 L 90 94 A 8 8 0 0 0 98 86 L 98 42 A 8 8 0 0 0 90 34 Z"
+        fill="url(#spec)"/>
+  <path d="M 59.05 22.95 A 7 7 0 0 1 68.95 22.95 L 105.05 59.05 A 7 7 0 0 1 105.05 68.95 L 68.95 105.05 A 7 7 0 0 1 59.05 105.05 L 22.95 68.95 A 7 7 0 0 1 22.95 59.05 Z M 38 34 A 8 8 0 0 0 30 42 L 30 86 A 8 8 0 0 0 38 94 L 90 94 A 8 8 0 0 0 98 86 L 98 42 A 8 8 0 0 0 90 34 Z"
+        fill="none" stroke="url(#rimLight)" stroke-width="1.6"/>
+  <path d="M 59.05 22.95 A 7 7 0 0 1 68.95 22.95 L 105.05 59.05 A 7 7 0 0 1 105.05 68.95 L 68.95 105.05 A 7 7 0 0 1 59.05 105.05 L 22.95 68.95 A 7 7 0 0 1 22.95 59.05 Z M 38 34 A 8 8 0 0 0 30 42 L 30 86 A 8 8 0 0 0 38 94 L 90 94 A 8 8 0 0 0 98 86 L 98 42 A 8 8 0 0 0 90 34 Z"
+        fill="none" stroke="url(#rimDark)" stroke-width="1.6"/>
+
+  <!-- ===== PHOTO: recess -> vivid glass -> gloss -> inner border ===== -->
+  <rect x="33" y="37" width="62" height="54" rx="6" fill="#6f7ca6" opacity="0.32"/>
+  <rect x="35" y="39" width="58" height="50" rx="4" fill="url(#screen)" opacity="0.94"/>
+  <g clip-path="url(#shotClip)">
+    <circle cx="52" cy="55" r="7" fill="#ffffff" opacity="0.85"/>
+    <path d="M 35 89 L 53 65 L 64 79 L 72 70 L 93 89 Z" fill="#ffffff" opacity="0.72"/>
+    <path d="M 35 39 L 93 39 L 93 46 C 74 55 56 55 35 49 Z" fill="#ffffff" opacity="0.26"/>
+  </g>
+  <rect x="35.8" y="39.8" width="56.4" height="48.4" rx="3.3" fill="none"
+        stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.1"/>
+
+</svg>

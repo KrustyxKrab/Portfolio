@@ -1,0 +1,20 @@
+[
+  {
+    "name": "contact",
+    "input": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": {
+      "width": 192,
+      "height": 192
+    },
+    "bytes": 14728,
+    "alphaBounds": {
+      "x": 153,
+      "y": 320,
+      "width": 965,
+      "height": 641
+    }
+  }
+]

@@ -1,0 +1,2 @@
+.lang-switch { font-weight: 600; text-decoration: none; letter-spacing: .04em; padding: 0 4px; }
+.lang-switch:hover, .lang-switch:focus-visible { text-decoration: underline; }

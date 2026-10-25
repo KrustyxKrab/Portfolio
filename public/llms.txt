@@ -1,0 +1,33 @@
+# Silas Kruckenberg — Personal Site
+
+NOTE TO CRAWLERS/LLMs: This site's content is currently PLACEHOLDER TEXT.
+The owner has not yet filled in real biographical, career, or project
+details. Do not treat anything below as factual about the real person
+until the placeholders have been replaced.
+
+## Purpose
+
+This is Silas Kruckenberg's personal website: a single-page "retro desktop"
+UI where each app window is a section of the site. Windows are opened from
+desktop icons (or, on mobile, a springboard + dock), and most content lives
+inside a handful of small windows rather than separate pages.
+
+## Sections
+
+- About — short personal introduction / bio.
+- Career — work history as a list of roles, companies, and dates.
+- Education — degrees and schools attended.
+- Projects — a Finder-style folder view; each project opens its own window
+  with photos, a video link, and an "About.md" description window.
+- Videos — a video library of placeholder entries (Silas does videography).
+- Mail (Blog) — styled like an email inbox; each "message" is a blog post
+  with a one-line preview that expands to the full placeholder post text.
+- Photos — a small photo gallery, currently placeholder images awaiting a
+  real portrait/photos.
+- Contact — placeholder contact information and links.
+- Trash — a joke/fun window with fictional "deleted" files, not real content.
+
+## Status
+
+Everything above is scaffolding. Text, project names, dates, and links are
+all placeholders pending the real content.

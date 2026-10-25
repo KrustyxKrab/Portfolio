@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Desktop from '../../../components/Desktop.astro';
+import { getApps } from '../../../lib/apps';
+import { strings } from '../../../lib/i18n';
+export async function getStaticPaths() {
+  return (await getApps('en'))
+    .filter(app => app.id !== 'welcome')
+    .map(app => ({ params: { app: app.id }, props: { title: app.title } }));
+}
+const { title } = Astro.props;
+const initialApp = Astro.params.app;
+---
+<BaseLayout title={strings('en').siteTitle} locale="en" app={initialApp}><Desktop locale="en" initialApp={initialApp} /></BaseLayout>

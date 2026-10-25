@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!--
+    "Ideas"
+
+    MODULE: SHEET — shared verbatim with document.svg, readme.svg, clipping.svg,
+    llms-txt.svg, sticky.svg and contact.svg. The sheet is ONE beveled glass pane;
+    the LiquidButton bevel + ::before specular come from the CSS, so this SVG
+    paints no specular blob and no body fill on it. Shared geometry:
+      front pane   <rect data-glass x="28" y="14" width="72" height="100" rx="9"/>
+      fold flap    M 78 14 L 78 36 L 100 36 Z      (dog-ear, f=22, reflected corner)
+      crease       M 78 14 L 100 36
+    Only the GLYPH block below differs between family members.
+
+    GLYPH: the PNG's yellow note, kept as the family's one amber member — the
+    pane stays glass and only carries a faint url(#noteTint) identity wash,
+    exactly as about.svg's badge carries a faint badgeTint.
+  -->
+  <defs>
+    <linearGradient id="topBody" x1="0" y1="1" x2="0.4" y2="0">
+      <stop offset="0" stop-color="#dce5f7"/>
+      <stop offset="1" stop-color="#f8fbff"/>
+    </linearGradient>
+    <linearGradient id="sideBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#93a1c7"/>
+      <stop offset="1" stop-color="#6d7c9a"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0"   stop-color="#7cc4ff"/>
+      <stop offset="0.5" stop-color="#2f66e6"/>
+      <stop offset="1"   stop-color="#78e4ff"/>
+    </linearGradient>
+    <linearGradient id="badgeTint" x1="0.2" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#a9d4ff"/>
+      <stop offset="1" stop-color="#3d6fe8"/>
+    </linearGradient>
+    <!-- specular sheet for the clipped depth panes = the CSS ::before analogue -->
+    <linearGradient id="spec" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0"   stop-color="#ffffff" stop-opacity="0.32"/>
+      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0.07"/>
+      <stop offset="0.6" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <!-- dual-rim bevel for the clipped panes, matched to the front CSS bevel weight -->
+    <linearGradient id="rimLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"    stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="0.5"  stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="1"    stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rimDark" x1="1" y1="1" x2="0.2" y2="0.1">
+      <stop offset="0"   stop-color="#2b3a68" stop-opacity="0.45"/>
+      <stop offset="0.5" stop-color="#2b3a68" stop-opacity="0"/>
+      <stop offset="1"   stop-color="#2b3a68" stop-opacity="0"/>
+    </linearGradient>
+    <!-- SHEET module: the turned-over back of the folded corner -->
+    <linearGradient id="foldFace" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.62"/>
+      <stop offset="1" stop-color="#c9d6ef" stop-opacity="0.34"/>
+    </linearGradient>
+    <!-- sticky note: the one amber member of the family -->
+    <linearGradient id="noteTint" x1="0.1" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#ffe89a"/>
+      <stop offset="1" stop-color="#f0b73a"/>
+    </linearGradient>
+
+    <!-- GLASS FACES (read by Icon.astro; never painted here) -->
+    <rect data-glass x="28" y="14" width="72" height="100" rx="9"/>
+  </defs>
+
+  <!-- ===== IDENTITY TINT: the note's amber, faint enough that the pane still
+       reads as glass (the bevel + specular stay pure CSS) ===== -->
+  <rect x="28" y="14" width="72" height="100" rx="9" fill="url(#noteTint)" opacity="0.4"/>
+
+  <!-- ===== SHEET MODULE: dog-eared corner (f=22) ===== -->
+  <path d="M 78 14 L 78 36 L 100 36 Z" fill="url(#foldFace)"/>
+  <path d="M 78 14 L 78 36 L 100 36 Z" fill="none" stroke="url(#rimLight)" stroke-width="1.3"/>
+  <path d="M 78 14 L 100 36" fill="none" stroke="#2b3a68" stroke-opacity="0.22" stroke-width="1.1"/>
+
+  <!-- ===== GLYPH: jotted lines, in the note's own ink ===== -->
+  <rect x="39" y="42" width="50" height="3.6" rx="1.8" fill="#8a6414" opacity="0.44"/>
+  <g fill="#9c7526" opacity="0.4">
+    <rect x="39" y="55" width="50" height="3.2" rx="1.6"/>
+    <rect x="39" y="66" width="44" height="3.2" rx="1.6"/>
+    <rect x="39" y="77" width="50" height="3.2" rx="1.6"/>
+    <rect x="39" y="88" width="30" height="3.2" rx="1.6"/>
+  </g>
+</svg>

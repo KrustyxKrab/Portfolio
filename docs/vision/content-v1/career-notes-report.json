@@ -1,0 +1,13 @@
+{
+  "passed": 7,
+  "checks": [
+    "de: 18 stations and 18 valid note references; 7 published Markdown notes; comment-only placeholders hidden; 320px wrapping, scrolling and mobile battery pass",
+    "de: desktop notes align with factual text, preserve horizontal bounds and hide battery",
+    "de: localized project link opens its existing window without reloading",
+    "en: 18 stations and 18 valid note references; 7 published Markdown notes; comment-only placeholders hidden; 320px wrapping, scrolling and mobile battery pass",
+    "en: desktop notes align with factual text, preserve horizontal bounds and hide battery",
+    "en: localized project link opens its existing window without reloading"
+  ],
+  "errors": [],
+  "screenshots": "/Users/silaskruckenberg/Documents/Personal/Personal_Website/docs/vision/content-v1"
+}

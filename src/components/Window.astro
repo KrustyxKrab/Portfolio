@@ -1,0 +1,26 @@
+---
+import { strings, localeHome, type Locale } from '../lib/i18n';
+import TextLayout from './layouts/TextLayout.astro';
+import ListLayout from './layouts/ListLayout.astro';
+import GalleryLayout from './layouts/GalleryLayout.astro';
+interface Props {
+  locale?: Locale;
+  id: string; title: string; width: number; height: number; x: number; y: number;
+  visible?: boolean; welcome?: boolean; raw?: boolean; layout?: 'text' | 'list' | 'gallery';
+  entries?: { heading: string; subheading?: string; date?: string; detail?: string; body?: string }[];
+  items?: { label: string; href?: string; image?: string; note?: string; target?: string }[];
+}
+const { locale = 'de', id, title, width, height, x, y, visible = false, welcome = false, raw = false, layout = 'text', entries = [], items = [] } = Astro.props;
+const t = strings(locale);
+---
+<section class:list={['window', { 'welcome-window': welcome, active: visible }]} id={`app-${id}`} data-id={id} data-w={width} data-h={height} data-x={x} data-y={y} data-visible={String(visible)} aria-labelledby={`title-${id}`} style={`--initial-x:${x}px;--initial-y:${y}px;--initial-w:${width}px;--initial-h:${height}px`}>
+  <div class="titlebar">
+    <button class="title-btn close" data-action="close" type="button" aria-label={t.closeWindow(title)}><span class="control-shape" aria-hidden="true"></span><span class="mobile-back">‹ {t.back}</span></button>
+    <h2 class="title-text" id={`title-${id}`} tabindex="-1">{title}</h2>
+    <button class="title-btn zoom" data-action="zoom" type="button" aria-label={t.zoomWindow(title)} aria-pressed="false"><span class="control-shape" aria-hidden="true"></span></button>
+  </div>
+  <div class="win-body">
+    {raw || welcome ? <slot /> : layout === 'text' ? <TextLayout locale={locale}><slot /></TextLayout> : layout === 'list' ? <ListLayout entries={entries} /> : <GalleryLayout items={items} locale={locale} />}
+  </div>
+  <noscript><a class="no-js-home" href={localeHome(locale)}>{t.home}</a></noscript>
+</section>

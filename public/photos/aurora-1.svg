@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#3a5a7a"/>
+  <rect x="24" y="24" width="752" height="552" fill="none" stroke="#fff" stroke-width="2" opacity="0.4"/>
+  <text x="400" y="290" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="36" fill="#fff">Aurora</text>
+  <text x="400" y="335" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#cdd9e8">Placeholder photo 1</text>
+</svg>

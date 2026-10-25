@@ -1,0 +1,4 @@
+Apple glyph: Font Awesome Free 7.3.1, Fonticons, Inc.
+Icon licence: CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/
+Source: https://github.com/FortAwesome/Font-Awesome/blob/7.x/svgs/brands/apple.svg
+This icon licence does not grant trademark rights. Apple trademark clearance is pending.

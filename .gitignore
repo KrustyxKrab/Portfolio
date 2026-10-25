@@ -5,6 +5,12 @@ dist/
 
 # dependencies
 node_modules/
+.venv/
+__pycache__/
+*.py[cod]
+
+# temporary filesystem permission probe
+public/icons/.perm_test.txt
 
 # logs
 npm-debug.log*
@@ -12,27 +18,13 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+
 # environment variables
 .env
-.env.local
 .env.production
-.env.production.local
 
 # macOS-specific files
 .DS_Store
 
-# IDE
+# jetbrains setting folder
 .idea/
-.vscode/
-*.swp
-*.swo
-*~
-
-# OS
-Thumbs.db
-.DS_Store
-
-# Temporary files
-*.tmp
-*.temp
-.cache/

@@ -1,0 +1,60 @@
+---
+import '../styles/global.css';
+import '../styles/markdown.css';
+import '../styles/i18n.css';
+import '@fontsource/pixelify-sans/latin-400.css';
+import '@fontsource/pixelify-sans/latin-600.css';
+
+import { strings, otherLocale, localizedAppHref, type Locale } from '../lib/i18n';
+
+interface Props {
+  title: string;
+  locale?: Locale;
+  app?: string; // public app id; 'welcome' = desktop
+}
+
+const { title, locale = 'de', app = 'welcome' } = Astro.props;
+const t = strings(locale);
+const url = (l: Locale) => new URL(localizedAppHref(app, l), Astro.site ?? Astro.url).href;
+---
+
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <!-- Desktop only (inverse of MOBILE_QUERY): start the model download before the scripts ask for it. -->
+    <link rel="preload" href="/models/macintosh/computer.glb" as="fetch" type="model/gltf-binary" crossorigin media="(min-width: 768px) and (min-height: 501px)" />
+    <link rel="icon" type="image/webp" href="/os-icons/about.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content={t.description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={t.description} />
+    <meta property="og:locale" content={locale === 'en' ? 'en_GB' : 'de_DE'} />
+    <meta property="og:locale:alternate" content={otherLocale(locale) === 'en' ? 'en_GB' : 'de_DE'} />
+    <link rel="alternate" hreflang="de" href={url('de')} />
+    <link rel="alternate" hreflang="en" href={url('en')} />
+    <link rel="alternate" hreflang="x-default" href={url('de')} />
+    <script is:inline define:vars={{ locale }}>
+      // ponytail: timezone is only a location proxy for "visitor is in Germany";
+      // upgrade path = edge geo header (e.g. Vercel x-vercel-ip-country middleware).
+      try {
+        let want = localStorage.getItem('silas-locale');
+        if (want !== 'de' && want !== 'en') {
+          const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          want = tz === 'Europe/Berlin' || tz === 'Europe/Busingen' ? 'de' : 'en';
+        }
+        if (want !== locale) {
+          const p = location.pathname;
+          const path = want === 'en' ? '/en' + p : p.replace(/^\/en(?=\/)/, '');
+          location.replace(path + location.search + location.hash);
+        }
+      } catch {}
+    </script>
+    <meta name="theme-color" content="#efe3cc" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

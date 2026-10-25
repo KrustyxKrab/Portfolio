@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <rect width="600" height="800" fill="#7a7568"/>
+  <rect x="24" y="24" width="552" height="752" fill="none" stroke="#fff" stroke-width="2" opacity="0.4"/>
+  <text x="300" y="390" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#fff">Portrait 2</text>
+  <text x="300" y="430" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#e0ded4">Real photo goes here</text>
+</svg>

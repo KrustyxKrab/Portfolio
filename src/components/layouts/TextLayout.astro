@@ -1,0 +1,24 @@
+---
+import { strings, localeHome, type Locale } from '../../lib/i18n';
+interface Props {
+  locale?: Locale;
+  title?: string;
+  description?: string;
+  date?: Date;
+  trail?: { id: string; href: string; title: string }[];
+  empty?: boolean;
+  folder?: boolean;
+}
+const { locale = 'de', title, description, date, trail = [], empty = false, folder = false } = Astro.props;
+const t = strings(locale);
+---
+<article class="win-prose markdown-reader">
+  {title && <header class="reader-header">
+    <nav class="reader-path" aria-label={t.path}><a href={localeHome(locale)} data-target="welcome">{t.desktop}</a>{trail.map(parent => <><span aria-hidden="true">/</span><a href={parent.href} data-target={parent.id}>{parent.title}</a></>)}</nav>
+    <h1>{title}</h1>
+    {description && <p class="reader-description">{description}</p>}
+    {date && <time class="reader-date" datetime={date.toISOString().slice(0, 10)}>{date.toLocaleDateString(t.dateLocale, { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })}</time>}
+  </header>}
+  <div class="reader-content"><slot /></div>
+  {empty && <div class="reader-empty"><span class:list={['empty-art', { 'empty-folder': folder }]} aria-hidden="true"></span><p>{folder ? t.emptyFolder : t.emptyPage}</p></div>}
+</article>

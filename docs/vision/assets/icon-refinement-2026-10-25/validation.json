@@ -1,0 +1,46 @@
+{
+  "assets": [
+    {
+      "file": "public/os-icons/journal.webp",
+      "width": 192,
+      "height": 192,
+      "transparentBorder": true,
+      "sha256": "8cf5c9008b276b7c784eea1be8e2c1eede72de969fd01644b5616b748140227e"
+    },
+    {
+      "file": "public/os-icons/photos.webp",
+      "width": 192,
+      "height": 192,
+      "transparentBorder": true,
+      "sha256": "480dc7adea6913ea0e623e3b49fbc0193e49d8ffe23bfc228db09606bb427dc6"
+    },
+    {
+      "file": "public/os-icons/contact.webp",
+      "width": 192,
+      "height": 192,
+      "transparentBorder": true,
+      "sha256": "6fdbc9f6e69c353df4c725a8f1ea2206aeb85f945ca1b41a6c5580825428870f"
+    },
+    {
+      "file": "public/os-icons/ideas.webp",
+      "width": 192,
+      "height": 192,
+      "transparentBorder": true,
+      "sha256": "95cd1ebea5c6b246bf9c3b98db084d3b2d0119c84cf9cb54f1a42338daf19cb1"
+    },
+    {
+      "file": "public/os-icons/career.webp",
+      "width": 192,
+      "height": 192,
+      "transparentBorder": true,
+      "sha256": "082508a754997535f8f4d57412593bca7b1af106cd980cb8cd0106ddbae4ab2f"
+    }
+  ],
+  "unchanged": [
+    "about",
+    "projects"
+  ],
+  "livePreview": "http://localhost:4323/",
+  "method": "Alpha/dimension checks, immutable reference comparison, visual inspection at production size and in the live desktop. No application source changes.",
+  "contactCorrection": "Front/address side with stamp; reverse fold seams removed. Other nine icon files unchanged."
+}

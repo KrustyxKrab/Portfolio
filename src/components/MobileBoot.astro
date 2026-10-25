@@ -1,0 +1,39 @@
+---
+// Phone-only CRT boot (~1.5s). While running <html> has `booting`; on finish it is removed and `mobileboot:done` fires.
+import type { Locale } from '../lib/i18n';
+interface Props { locale?: Locale }
+---
+<div class="mobile-boot" aria-hidden="true"><i class="mb-pic"></i><i class="mb-flash"></i><img class="mb-mac" src="/os-icons/about.webp" alt="" width="96" height="96" decoding="async" /></div>
+<script is:inline>
+  (() => {
+    const h = document.documentElement, el = document.querySelector('.mobile-boot');
+    // Same query as MOBILE_QUERY in scripts/layout.js.
+    if (!el || !matchMedia('(max-width: 767px), (max-height: 500px)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return el?.remove();
+    let done = false;
+    const finish = () => {
+      if (done) return; done = true;
+      h.classList.remove('booting'); el.remove();
+      document.dispatchEvent(new Event('mobileboot:done'));
+    };
+    h.classList.add('booting');
+    el.addEventListener('pointerdown', finish, { once: true });
+    el.addEventListener('animationend', (e) => { if (e.animationName === 'mb-out') finish(); });
+    setTimeout(finish, 1700); setTimeout(finish, 2500);
+  })();
+</script>
+<style is:global>
+  .mobile-boot { display: none; }
+  html.booting .mobile-boot {
+    display: block; position: fixed; inset: 0; z-index: 2147483000; background: #000; overflow: hidden;
+    touch-action: manipulation; contain: strict; animation: mb-out .3s ease-in 1.2s forwards;
+  }
+  /* The "picture": a 2px line that opens vertically (CRT power-on). */
+  .mb-pic { position: absolute; inset: 0; background: #dcdcd4; clip-path: inset(calc(50% - 1px) 0); animation: mb-open .3s cubic-bezier(.7, 0, .3, 1) .12s forwards, mb-line .12s ease-out both; will-change: clip-path; }
+  .mb-flash { position: absolute; inset: 0; background: #fff; opacity: 0; animation: mb-flash .3s ease-out .3s; }
+  .mb-mac { position: absolute; left: 50%; top: 50%; width: 96px; height: 96px; margin: -48px 0 0 -48px; image-rendering: pixelated; opacity: 0; animation: mb-mac 0.7s steps(1, end) .5s forwards; }
+  @keyframes mb-line { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes mb-open { to { clip-path: inset(0); } }
+  @keyframes mb-flash { 0% { opacity: .85; } 100% { opacity: 0; } }
+  @keyframes mb-mac { 0%, 55% { opacity: 1; } 55.01%, 70% { opacity: 0; } 70.01%, 100% { opacity: 1; } }
+  @keyframes mb-out { to { opacity: 0; } }
+</style>

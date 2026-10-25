@@ -1,0 +1,92 @@
+[
+  {
+    "name": "journal",
+    "input": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": {
+      "width": 192,
+      "height": 192
+    },
+    "bytes": 19990,
+    "alphaBounds": {
+      "x": 224,
+      "y": 256,
+      "width": 827,
+      "height": 874
+    }
+  },
+  {
+    "name": "photos",
+    "input": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": {
+      "width": 192,
+      "height": 192
+    },
+    "bytes": 21918,
+    "alphaBounds": {
+      "x": 161,
+      "y": 327,
+      "width": 971,
+      "height": 717
+    }
+  },
+  {
+    "name": "contact",
+    "input": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": {
+      "width": 192,
+      "height": 192
+    },
+    "bytes": 14728,
+    "alphaBounds": {
+      "x": 153,
+      "y": 320,
+      "width": 965,
+      "height": 641
+    }
+  },
+  {
+    "name": "ideas",
+    "input": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": {
+      "width": 192,
+      "height": 192
+    },
+    "bytes": 19364,
+    "alphaBounds": {
+      "x": 155,
+      "y": 298,
+      "width": 947,
+      "height": 821
+    }
+  },
+  {
+    "name": "career",
+    "input": {
+      "width": 1254,
+      "height": 1254
+    },
+    "output": {
+      "width": 192,
+      "height": 192
+    },
+    "bytes": 26832,
+    "alphaBounds": {
+      "x": 199,
+      "y": 215,
+      "width": 910,
+      "height": 971
+    }
+  }
+]

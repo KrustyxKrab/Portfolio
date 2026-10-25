@@ -1,0 +1,11 @@
+---
+import { localizedAppHref, type Locale } from '../lib/i18n';
+import { iconSrc } from '../lib/icons';
+interface Props { locale?: Locale; id: string; title: string; icon: string; href?: string }
+const { id, title, icon, locale = 'de' } = Astro.props;
+const src = iconSrc(icon);
+---
+<a class="desktop-icon" href={Astro.props.href ?? localizedAppHref(id, locale)} data-target={id}>
+  <img class="icon-art" src={src} alt="" width="96" height="96" draggable="false" />
+  <span class="icon-label">{title}</span>
+</a>

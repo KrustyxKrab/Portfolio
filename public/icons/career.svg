@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!--
+    "Career"
+
+    MODULE: BOX — about.svg's tangent extrusion (front rect + top/side depth
+    panes along d=(12,-9), unit (0.8,-0.6)), turned landscape for the PNG's
+    wide computer case. Front rect x=20 y=36 w=76 h=64 rx=9.
+
+    The dated Finder face on the screen is replaced by the same vivid
+    url(#screen) glass about.svg uses, carrying a rising track; the case's
+    vent ribs stay on the side face, parallel to the extrusion.
+  -->
+  <defs>
+    <linearGradient id="topBody" x1="0" y1="1" x2="0.4" y2="0">
+      <stop offset="0" stop-color="#dce5f7"/>
+      <stop offset="1" stop-color="#f8fbff"/>
+    </linearGradient>
+    <linearGradient id="sideBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#93a1c7"/>
+      <stop offset="1" stop-color="#6d7c9a"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0"   stop-color="#7cc4ff"/>
+      <stop offset="0.5" stop-color="#2f66e6"/>
+      <stop offset="1"   stop-color="#78e4ff"/>
+    </linearGradient>
+    <linearGradient id="badgeTint" x1="0.2" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#a9d4ff"/>
+      <stop offset="1" stop-color="#3d6fe8"/>
+    </linearGradient>
+    <!-- specular sheet for the clipped depth panes = the CSS ::before analogue -->
+    <linearGradient id="spec" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0"   stop-color="#ffffff" stop-opacity="0.32"/>
+      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0.07"/>
+      <stop offset="0.6" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <!-- dual-rim bevel for the clipped panes, matched to the front CSS bevel weight -->
+    <linearGradient id="rimLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"    stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="0.5"  stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="1"    stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rimDark" x1="1" y1="1" x2="0.2" y2="0.1">
+      <stop offset="0"   stop-color="#2b3a68" stop-opacity="0.45"/>
+      <stop offset="0.5" stop-color="#2b3a68" stop-opacity="0"/>
+      <stop offset="1"   stop-color="#2b3a68" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="screenClip"><rect x="29" y="45" width="50" height="36" rx="4"/></clipPath>
+
+    <!-- GLASS FACES (read by Icon.astro; never painted here). back -> front. -->
+    <path data-glass d="M 93.36 38.64 L 105.36 29.64 A 9 9 0 0 1 108 36 L 108 82 A 9 9 0 0 1 104.4 89.2 L 92.4 98.2 A 9 9 0 0 0 96 91 L 96 45 A 9 9 0 0 0 93.36 38.64 Z"/>
+    <path data-glass d="M 23.6 37.8 A 9 9 0 0 1 29 36 L 87 36 A 9 9 0 0 1 93.36 38.64 L 105.36 29.64 A 9 9 0 0 0 99 27 L 41 27 A 9 9 0 0 0 35.6 28.8 Z"/>
+    <rect data-glass x="20" y="36" width="76" height="64" rx="9"/>
+  </defs>
+
+  <!-- ===== DEPTH PANES: faint tint + specular sheet + dual-rim bevel ===== -->
+  <!-- SIDE (receding/darker) -->
+  <path d="M 93.36 38.64 L 105.36 29.64 A 9 9 0 0 1 108 36 L 108 82 A 9 9 0 0 1 104.4 89.2 L 92.4 98.2 A 9 9 0 0 0 96 91 L 96 45 A 9 9 0 0 0 93.36 38.64 Z"
+        fill="url(#sideBody)" opacity="0.4"/>
+  <path d="M 93.36 38.64 L 105.36 29.64 A 9 9 0 0 1 108 36 L 108 82 A 9 9 0 0 1 104.4 89.2 L 92.4 98.2 A 9 9 0 0 0 96 91 L 96 45 A 9 9 0 0 0 93.36 38.64 Z"
+        fill="url(#spec)"/>
+  <!-- TOP (catching light/lighter) -->
+  <path d="M 23.6 37.8 A 9 9 0 0 1 29 36 L 87 36 A 9 9 0 0 1 93.36 38.64 L 105.36 29.64 A 9 9 0 0 0 99 27 L 41 27 A 9 9 0 0 0 35.6 28.8 Z"
+        fill="url(#topBody)" opacity="0.42"/>
+  <path d="M 23.6 37.8 A 9 9 0 0 1 29 36 L 87 36 A 9 9 0 0 1 93.36 38.64 L 105.36 29.64 A 9 9 0 0 0 99 27 L 41 27 A 9 9 0 0 0 35.6 28.8 Z"
+        fill="url(#spec)"/>
+
+  <!-- dual-rim bevel on each depth pane (bright top-left, dark bottom-right) -->
+  <path d="M 93.36 38.64 L 105.36 29.64 A 9 9 0 0 1 108 36 L 108 82 A 9 9 0 0 1 104.4 89.2 L 92.4 98.2 A 9 9 0 0 0 96 91 L 96 45 A 9 9 0 0 0 93.36 38.64 Z"
+        fill="none" stroke="url(#rimLight)" stroke-width="1.6"/>
+  <path d="M 93.36 38.64 L 105.36 29.64 A 9 9 0 0 1 108 36 L 108 82 A 9 9 0 0 1 104.4 89.2 L 92.4 98.2 A 9 9 0 0 0 96 91 L 96 45 A 9 9 0 0 0 93.36 38.64 Z"
+        fill="none" stroke="url(#rimDark)" stroke-width="1.6"/>
+  <path d="M 23.6 37.8 A 9 9 0 0 1 29 36 L 87 36 A 9 9 0 0 1 93.36 38.64 L 105.36 29.64 A 9 9 0 0 0 99 27 L 41 27 A 9 9 0 0 0 35.6 28.8 Z"
+        fill="none" stroke="url(#rimLight)" stroke-width="1.6"/>
+  <path d="M 23.6 37.8 A 9 9 0 0 1 29 36 L 87 36 A 9 9 0 0 1 93.36 38.64 L 105.36 29.64 A 9 9 0 0 0 99 27 L 41 27 A 9 9 0 0 0 35.6 28.8 Z"
+        fill="none" stroke="url(#rimDark)" stroke-width="1.6"/>
+
+  <!-- vent ribs cut into the SIDE face, parallel to the extrusion -->
+  <g fill="#2b3a68" opacity="0.26">
+    <rect x="98.5" y="52.3" width="2.2" height="26" rx="1.1"/>
+    <rect x="101.5" y="50" width="2.2" height="26" rx="1.1"/>
+    <rect x="104.5" y="47.8" width="2.2" height="26" rx="1.1"/>
+  </g>
+
+  <!-- ===== FRONT PANE CONTENT (the pane itself is glass; paint only on it) ===== -->
+  <!-- SCREEN: recess -> vivid blue-cyan glass -> top gloss -> inner border -->
+  <rect x="27" y="43" width="54" height="40" rx="6" fill="#6f7ca6" opacity="0.32"/>
+  <rect x="29" y="45" width="50" height="36" rx="4" fill="url(#screen)" opacity="0.94"/>
+  <g clip-path="url(#screenClip)">
+    <path d="M 29 45 L 79 45 L 79 53 C 61 62 45 62 29 56 Z" fill="#ffffff" opacity="0.32"/>
+  </g>
+  <!-- the career itself: a rising track across the screen -->
+  <path d="M 34 74 L 45 65 L 54 69 L 64 56 L 74 51" fill="none" stroke="#ffffff"
+        stroke-opacity="0.9" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="74" cy="51" r="2.8" fill="#ffffff" opacity="0.9"/>
+  <rect x="29.8" y="45.8" width="48.4" height="34.4" rx="3.3" fill="none"
+        stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.1"/>
+
+  <!-- base rail, etched into the glass -->
+  <rect x="32" y="88" width="52" height="4.4" rx="2.2" fill="#5f6c98" opacity="0.5"/>
+
+</svg>

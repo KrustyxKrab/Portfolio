@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!--
+    "Projects"
+
+    MODULE: FOLDER = about.svg's tangent extrusion (front rect extruded along
+    d=(12,-9), unit (0.8,-0.6)) read as a folder: everything behind the front
+    flap is ONE flat plane, so extrude_union() merges what about.svg keeps as
+    separate top/side faces into a single contour, with the tab spliced into
+    the back panel's top edge.
+
+    Front rect x=17 y=47 w=80 h=52 rx=9. The PNG's periwinkle folder survives
+    as a faint url(#badgeTint) identity wash — the panes are still glass, and
+    their bevel/specular stay pure CSS.
+  -->
+  <defs>
+    <linearGradient id="topBody" x1="0" y1="1" x2="0.4" y2="0">
+      <stop offset="0" stop-color="#dce5f7"/>
+      <stop offset="1" stop-color="#f8fbff"/>
+    </linearGradient>
+    <linearGradient id="sideBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#93a1c7"/>
+      <stop offset="1" stop-color="#6d7c9a"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0"   stop-color="#7cc4ff"/>
+      <stop offset="0.5" stop-color="#2f66e6"/>
+      <stop offset="1"   stop-color="#78e4ff"/>
+    </linearGradient>
+    <linearGradient id="badgeTint" x1="0.2" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#a9d4ff"/>
+      <stop offset="1" stop-color="#3d6fe8"/>
+    </linearGradient>
+    <!-- specular sheet for the clipped depth panes = the CSS ::before analogue -->
+    <linearGradient id="spec" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0"   stop-color="#ffffff" stop-opacity="0.32"/>
+      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0.07"/>
+      <stop offset="0.6" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <!-- dual-rim bevel for the clipped panes, matched to the front CSS bevel weight -->
+    <linearGradient id="rimLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"    stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="0.5"  stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="1"    stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rimDark" x1="1" y1="1" x2="0.2" y2="0.1">
+      <stop offset="0"   stop-color="#2b3a68" stop-opacity="0.45"/>
+      <stop offset="0.5" stop-color="#2b3a68" stop-opacity="0"/>
+      <stop offset="1"   stop-color="#2b3a68" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- GLASS FACES (read by Icon.astro; never painted here). back -> front. -->
+    <path data-glass d="M 32.6 39.8 A 9 9 0 0 1 38 38 L 40 38 L 40 32 A 4 4 0 0 1 44 28 L 72 28 A 4 4 0 0 1 76.5 31.5 L 78 38 L 100 38 A 9 9 0 0 1 109 47 L 109 81 A 9 9 0 0 1 105.4 88.2 L 93.4 97.2 A 9 9 0 0 0 97 90 L 97 56 A 9 9 0 0 0 88 47 L 26 47 A 9 9 0 0 0 20.6 48.8 Z"/>
+    <rect data-glass x="17" y="47" width="80" height="52" rx="9"/>
+  </defs>
+
+  <!-- ===== BACK PANEL: one plane (tab + the strips showing above and beside
+       the front flap), so it is ONE pane with ONE contour — no false fold
+       seam. Depth-pane parity with about.svg: tint + spec + dual rim. ===== -->
+  <path d="M 32.6 39.8 A 9 9 0 0 1 38 38 L 40 38 L 40 32 A 4 4 0 0 1 44 28 L 72 28 A 4 4 0 0 1 76.5 31.5 L 78 38 L 100 38 A 9 9 0 0 1 109 47 L 109 81 A 9 9 0 0 1 105.4 88.2 L 93.4 97.2 A 9 9 0 0 0 97 90 L 97 56 A 9 9 0 0 0 88 47 L 26 47 A 9 9 0 0 0 20.6 48.8 Z"
+        fill="url(#badgeTint)" opacity="0.56"/>
+  <path d="M 32.6 39.8 A 9 9 0 0 1 38 38 L 40 38 L 40 32 A 4 4 0 0 1 44 28 L 72 28 A 4 4 0 0 1 76.5 31.5 L 78 38 L 100 38 A 9 9 0 0 1 109 47 L 109 81 A 9 9 0 0 1 105.4 88.2 L 93.4 97.2 A 9 9 0 0 0 97 90 L 97 56 A 9 9 0 0 0 88 47 L 26 47 A 9 9 0 0 0 20.6 48.8 Z"
+        fill="url(#spec)"/>
+  <path d="M 32.6 39.8 A 9 9 0 0 1 38 38 L 40 38 L 40 32 A 4 4 0 0 1 44 28 L 72 28 A 4 4 0 0 1 76.5 31.5 L 78 38 L 100 38 A 9 9 0 0 1 109 47 L 109 81 A 9 9 0 0 1 105.4 88.2 L 93.4 97.2 A 9 9 0 0 0 97 90 L 97 56 A 9 9 0 0 0 88 47 L 26 47 A 9 9 0 0 0 20.6 48.8 Z"
+        fill="none" stroke="url(#rimLight)" stroke-width="1.6"/>
+  <path d="M 32.6 39.8 A 9 9 0 0 1 38 38 L 40 38 L 40 32 A 4 4 0 0 1 44 28 L 72 28 A 4 4 0 0 1 76.5 31.5 L 78 38 L 100 38 A 9 9 0 0 1 109 47 L 109 81 A 9 9 0 0 1 105.4 88.2 L 93.4 97.2 A 9 9 0 0 0 97 90 L 97 56 A 9 9 0 0 0 88 47 L 26 47 A 9 9 0 0 0 20.6 48.8 Z"
+        fill="none" stroke="url(#rimDark)" stroke-width="1.6"/>
+
+  <!-- ===== FRONT FLAP: identity tint only. No painted specular — the
+       bevel and the ::before sheet come from the CSS. ===== -->
+  <rect x="17" y="47" width="80" height="52" rx="9"
+        fill="url(#badgeTint)" opacity="0.4"/>
+
+</svg>

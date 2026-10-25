@@ -1,0 +1,28 @@
+---
+// Phone-only wallpaper: tilt-parallax layers (sky/city/water), no ambient animations.
+// Layers built by tools/wallpaper_layers.py. Coordinates are in wallpaper image px (853x1844).
+---
+<div class="wl" aria-hidden="true">
+  <div class="wl-g">
+    <div class="wl-l wl-sky"><i class="wl-bg" style="--t:-30;--h:1616"></i></div>
+    <div class="wl-l wl-city"><i class="wl-bg" style="--t:1195;--h:405"></i></div>
+    <div class="wl-l wl-water"><i class="wl-bg" style="--t:1470;--h:404"></i></div>
+  </div>
+</div>
+<style is:global>
+  .wl { display: none; }
+  @media (max-width: 767px), (max-height: 500px) {
+    .wl { display: block; position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; container-type: size; }
+    .quiet-wallpaper .wl { display: none; }
+    .wl-g { --u: calc(max(100cqw, 100cqh * 853 / 1844) / 853); position: absolute; left: 50%; bottom: 0; width: calc(var(--u) * 853); height: calc(var(--u) * 1844); translate: -50% 0; }
+    .wl-l { position: absolute; inset: 0; will-change: transform; transform: translate3d(calc(var(--tx, 0) * var(--px) * 1px), calc(var(--ty, 0) * var(--py) * 1px), 0); }
+    .wl-sky .wl-bg { background-image: url(/wallpapers/layers/sky.webp); }
+    .wl-city .wl-bg { background-image: url(/wallpapers/layers/city.webp); }
+    .wl-water .wl-bg { background-image: url(/wallpapers/layers/water.webp); }
+    .wl-sky { --px: -9; --py: -5; }
+    .wl-city { --px: -4; --py: -2.5; }
+    .wl-water { --px: -1.5; --py: -1; }
+    .wl-bg { position: absolute; left: calc(var(--u) * -30); width: calc(var(--u) * 913); top: calc(var(--u) * var(--t)); height: calc(var(--u) * var(--h)); background-size: 100% 100%; image-rendering: pixelated; }
+  }
+</style>
+<script>import '../scripts/wallpaper-life.js';</script>

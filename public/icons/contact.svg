@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!--
+    "Contact"
+
+    MODULE: SHEET — shared verbatim with document.svg, readme.svg, clipping.svg,
+    llms-txt.svg, sticky.svg and contact.svg. The sheet is ONE beveled glass pane;
+    the LiquidButton bevel + ::before specular come from the CSS, so this SVG
+    paints no specular blob and no body fill on it. Shared geometry:
+      front pane   <rect data-glass x="28" y="14" width="72" height="100" rx="9"/>
+      fold flap    M 78 14 L 78 36 L 100 36 Z      (dog-ear, f=22, reflected corner)
+      crease       M 78 14 L 100 36
+    Only the GLYPH block below differs between family members.
+
+    GLYPH: the PNG's big "@" watermark plus its little address card, redrawn as
+    a vivid url(#screen) card that overhangs the sheet on the right.
+  -->
+  <defs>
+    <linearGradient id="topBody" x1="0" y1="1" x2="0.4" y2="0">
+      <stop offset="0" stop-color="#dce5f7"/>
+      <stop offset="1" stop-color="#f8fbff"/>
+    </linearGradient>
+    <linearGradient id="sideBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#93a1c7"/>
+      <stop offset="1" stop-color="#6d7c9a"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0"   stop-color="#7cc4ff"/>
+      <stop offset="0.5" stop-color="#2f66e6"/>
+      <stop offset="1"   stop-color="#78e4ff"/>
+    </linearGradient>
+    <linearGradient id="badgeTint" x1="0.2" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#a9d4ff"/>
+      <stop offset="1" stop-color="#3d6fe8"/>
+    </linearGradient>
+    <!-- specular sheet for the clipped depth panes = the CSS ::before analogue -->
+    <linearGradient id="spec" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0"   stop-color="#ffffff" stop-opacity="0.32"/>
+      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0.07"/>
+      <stop offset="0.6" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <!-- dual-rim bevel for the clipped panes, matched to the front CSS bevel weight -->
+    <linearGradient id="rimLight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0"    stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="0.5"  stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="1"    stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rimDark" x1="1" y1="1" x2="0.2" y2="0.1">
+      <stop offset="0"   stop-color="#2b3a68" stop-opacity="0.45"/>
+      <stop offset="0.5" stop-color="#2b3a68" stop-opacity="0"/>
+      <stop offset="1"   stop-color="#2b3a68" stop-opacity="0"/>
+    </linearGradient>
+    <!-- SHEET module: the turned-over back of the folded corner -->
+    <linearGradient id="foldFace" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.62"/>
+      <stop offset="1" stop-color="#c9d6ef" stop-opacity="0.34"/>
+    </linearGradient>
+
+    <!-- GLASS FACES (read by Icon.astro; never painted here) -->
+    <rect data-glass x="28" y="14" width="72" height="100" rx="9"/>
+  </defs>
+
+  <!-- ===== SHEET MODULE: dog-eared corner (f=22) ===== -->
+  <path d="M 78 14 L 78 36 L 100 36 Z" fill="url(#foldFace)"/>
+  <path d="M 78 14 L 78 36 L 100 36 Z" fill="none" stroke="url(#rimLight)" stroke-width="1.3"/>
+  <path d="M 78 14 L 100 36" fill="none" stroke="#2b3a68" stroke-opacity="0.22" stroke-width="1.1"/>
+
+  <!-- ===== GLYPH: the "@" watermark of the PNG ===== -->
+  <g fill="none" stroke="#5f6c98" stroke-opacity="0.42" stroke-linecap="round">
+    <path d="M 66.5 58.72 A 17 17 0 1 1 75 44" stroke-width="3.4"/>
+    <circle cx="58" cy="44" r="6.6" stroke-width="3.2"/>
+    <path d="M 64.6 44 L 64.6 48.5 C 64.6 53.6 69.2 55.6 73.6 54.4" stroke-width="3.2"/>
+  </g>
+
+  <!-- ===== GLYPH: the contact card, overhanging the sheet on the right ===== -->
+  <rect x="52" y="66" width="54" height="40" rx="7" fill="url(#screen)" opacity="0.94"/>
+  <rect x="52.8" y="66.8" width="52.4" height="38.4" rx="6.3" fill="none"
+        stroke="#ffffff" stroke-opacity="0.55" stroke-width="1.1"/>
+  <g fill="#ffffff" opacity="0.9">
+    <circle cx="66" cy="79" r="6.4"/>
+    <path d="M 56.6 94 A 9.4 9.4 0 0 1 75.4 94 Z"/>
+    <rect x="82" y="76" width="18" height="3.2" rx="1.6"/>
+    <rect x="82" y="85" width="18" height="3.2" rx="1.6"/>
+    <rect x="82" y="94" width="12" height="3.2" rx="1.6"/>
+  </g>
+</svg>

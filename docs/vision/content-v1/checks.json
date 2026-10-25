@@ -1,0 +1,21 @@
+{
+  "html_pages": 49,
+  "distinct_app_links": 46,
+  "broken_internal_app_links": [],
+  "pages_with_confirmed_youtube_link": 48,
+  "build": "passed",
+  "career": {
+    "de": {
+      "stations": 18,
+      "visible_notes": 7,
+      "note_files": 18
+    },
+    "en": {
+      "stations": 18,
+      "visible_notes": 7,
+      "note_files": 18
+    }
+  },
+  "browser_check_report": "career-notes-report.json",
+  "profile_source_date": "2026-10-24"
+}
